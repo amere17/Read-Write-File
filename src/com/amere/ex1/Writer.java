@@ -5,7 +5,7 @@
  * EX 1
  */
 //-----------------------------------------------------------------------------
-package Hadassah;
+package com.amere.ex1;
 import java.io.*;
 import java.net.URL;
 import java.nio.file.Files;
@@ -20,9 +20,9 @@ public class Writer {
     /**
      * Constructor: get the output file path and the data
      *              to fill the output file
-     * @param pathname
-     * @param m_map
-     * @throws IOException
+     * @param pathname pathe for the output  file
+     * @param m_map this is the data we need to write in the output file
+     * @throws IOException catch the errors of output file
      */
     public Writer(String pathname, HashMap<URL,Integer> m_map) throws IOException{
         writer = Files.newBufferedWriter(Paths.get(pathname));
@@ -30,14 +30,14 @@ public class Writer {
     }
     //----------------------------------------------------------
     public void writeOnFile() throws IOException {
-        try {
             map.forEach((key, value) -> {
-                try { writer.write(key + " " + value + "\n");
+                try {
+                    writer.write(key + " " + value + "\n");
+                } catch (IOException e) {
                 }
-                catch (IOException ex) { throw new UncheckedIOException(ex); }
             });
-        } catch(UncheckedIOException ex) { throw ex.getCause(); }
-        writer.close();
+            try { writer.close();
+        } catch (IOException e) {}
     }
 }
 //-----------------------------------------------------------------------------

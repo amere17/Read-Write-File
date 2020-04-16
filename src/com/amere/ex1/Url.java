@@ -6,7 +6,7 @@
  * EX 1
  */
 //-----------------------------------------------------------------------------
-package Hadassah;
+package com.amere.ex1;
 import java.io.IOException;
 import java.net.URL;
 import java.net.URLConnection;
@@ -50,7 +50,7 @@ public class Url {
 
     /**
      * calc the content length for the url
-     * @param url
+     * @param url url to calculate the content length
      * @throws IOException exception for the errors in this method
      */
     private void calcLength(String url) throws IOException {

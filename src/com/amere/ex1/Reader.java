@@ -5,7 +5,7 @@
  * EX 1
  */
 //-----------------------------------------------------------------------------
-package Hadassah;
+package com.amere.ex1;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -18,7 +18,7 @@ public class Reader {
 //-------------------------------------------------------------------
     /**
      * Constructor to get path of the input file
-     * @param mFileReaderPath
+     * @param mFileReaderPath input file path
      */
     public Reader(String mFileReaderPath){
         this.fileReaderPath = mFileReaderPath;

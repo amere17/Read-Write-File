@@ -14,7 +14,7 @@ import java.util.HashMap;
 //-----------------------------------------------------------------------------
 public class Reader {
     final private String fileReaderPath;
-    private HashMap<URL, Integer> url_Map = new HashMap<>();
+    private HashMap<Url, Integer> url_Map = new HashMap<>();
 //-------------------------------------------------------------------
     /**
      * Constructor to get path of the input file
@@ -28,10 +28,10 @@ public class Reader {
         String fileLine;
         final BufferedReader fileReader = new BufferedReader(new FileReader(fileReaderPath));
             while ((fileLine = fileReader.readLine()) != null) {
-                Url urlTest = new Url(fileLine);
-                if(urlTest.isValidUrl()){
-                 URL urlF = new URL(fileLine);
-                 setUrl_Map(urlF,urlTest.getLength());
+                Url url = new Url(fileLine);
+                if(url.isValidUrl()){
+                 //URL urlF = new URL(fileLine);
+                 setUrl_Map(url,url.getLength());
                 }
             }
             try {
@@ -45,14 +45,14 @@ public class Reader {
      *
      * @return Full urls map with the content length
      */
-    public HashMap<URL, Integer> getUrlMap(){return this.url_Map;}
+    public HashMap<Url, Integer> getUrlMap(){return this.url_Map;}
 
     /**
      * Function to append/put new data to the map
      * @param mUrl Url from the input file
      * @param len length of the content for this url
      */
-    public void setUrl_Map(URL mUrl,Integer len) {
+    public void setUrl_Map(Url mUrl, Integer len) {
         this.url_Map.put(mUrl,len);
     }
 }

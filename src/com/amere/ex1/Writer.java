@@ -14,7 +14,7 @@ import java.util.HashMap;
 //-----------------------------------------------------------------------------
 public class Writer {
     private BufferedWriter writer;
-    HashMap<URL,Integer> map;
+    HashMap<Url,Integer> map;
     //----------------------------------------------------------
 
     /**
@@ -24,7 +24,7 @@ public class Writer {
      * @param m_map this is the data we need to write in the output file
      * @throws IOException catch the errors of output file
      */
-    public Writer(String pathname, HashMap<URL,Integer> m_map) throws IOException{
+    public Writer(String pathname, HashMap<Url,Integer> m_map) throws IOException{
         writer = Files.newBufferedWriter(Paths.get(pathname));
         map = m_map;
     }
@@ -32,7 +32,7 @@ public class Writer {
     public void writeOnFile() throws IOException {
             map.forEach((key, value) -> {
                 try {
-                    writer.write(key + " " + value + "\n");
+                    writer.write(key.getUrl() + " " + value + "\n");
                 } catch (IOException e) {
                 }
             });

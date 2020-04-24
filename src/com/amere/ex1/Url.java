@@ -1,15 +1,21 @@
 /**
  * @author Mohamad Amer - 315336115
  * Url: - method to check the string from the input file is a url
- *      - method to get the length of the content for the url
+ * - method to get the length of the content for the url
  * 2020
  * EX 1
  */
 //-----------------------------------------------------------------------------
 package com.amere.ex1;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.List;
+
 //-----------------------------------------------------------------------------
 public class Url {
     private int Length = 0;
@@ -21,19 +27,20 @@ public class Url {
      * Constructor
      * @param mUrl set the string to check if this string is url/not url
      */
-    public Url(String mUrl){
+    public Url(String mUrl) {
         this.url = mUrl;
         try {
-           calcLength(url);
-        }catch (Exception e){}
+            calcLength(url);
+        } catch (Exception e) {
+        }
     }
     //----------------------------------------------------------
 
     /**
      * @return the content length for the valid url
      */
-    public int getLength(){
-        if(Length == -1)
+    public int getLength() {
+        if (Length == -1)
             return 0;
         return Length;
     }
@@ -43,7 +50,7 @@ public class Url {
      * return the boolean variable of the object
      * @return if the url is valid or not
      */
-    public boolean isValidUrl(){
+    public boolean isValidUrl() {
         return validUrl;
     }
     //----------------------------------------------------------
@@ -55,11 +62,20 @@ public class Url {
      */
     private void calcLength(String url) throws IOException {
         URL urlT;
+        int counter = 0;
         urlT = new URL(url);
         URLConnection c = urlT.openConnection();
         c.connect();
         validUrl = true;
-        this.Length = c.getContentLength();
+        InputStream inp = new BufferedInputStream(urlT.openStream());
+        while (inp.read()!= -1) {
+            counter++;
+        }
+        this.Length = counter;
+    }
+
+    public String getUrl(){
+        return url;
     }
 }
 //-----------------------------------------------------------------------------

@@ -11,14 +11,14 @@ import java.util.*;
 //-----------------------------------------------------------------------------
 public class Controller {
 
-    private HashMap<URL,Integer> sortedMap;
+    private HashMap<Url,Integer> sortedMap;
 //-------------------------------------------------------------------
     /**
      *
      * @param map
      * constructor for the controller to get the hashmap
      */
-    public Controller(final HashMap<URL, Integer> map){
+    public Controller(final HashMap<Url, Integer> map){
         sortedMap = map;
     }
 //-------------------------------------------------------------------
@@ -27,7 +27,7 @@ public class Controller {
      * @return sortedMap
      * Function to return the map after sorting method
      */
-    public HashMap<URL,Integer> getMap(){
+    public HashMap<Url,Integer> getMap(){
         return sortedMap;
     }
 //-------------------------------------------------------------------
@@ -35,17 +35,17 @@ public class Controller {
      * Function to sort the map by the value
      */
     public void sortMap(){
-        List<Map.Entry<URL, Integer> > list =
-                new LinkedList<Map.Entry<URL, Integer> >(sortedMap.entrySet());
-        Collections.sort(list, new Comparator<Map.Entry<URL, Integer> >() {
-            public int compare(Map.Entry<URL, Integer> url1,
-                               Map.Entry<URL, Integer> url2)
+        List<Map.Entry<Url, Integer> > list =
+                new LinkedList<Map.Entry<Url, Integer> >(sortedMap.entrySet());
+        Collections.sort(list, new Comparator<Map.Entry<Url, Integer> >() {
+            public int compare(Map.Entry<Url, Integer> url1,
+                               Map.Entry<Url, Integer> url2)
             {
                 return (url1.getValue()).compareTo(url2.getValue());
             }
         });
-        HashMap<URL, Integer> temp = new LinkedHashMap<URL, Integer>();
-        for (Map.Entry<URL, Integer> url : list) {
+        HashMap<Url, Integer> temp = new LinkedHashMap<Url, Integer>();
+        for (Map.Entry<Url, Integer> url : list) {
             temp.put(url.getKey(), url.getValue());
         }
         sortedMap = temp;
